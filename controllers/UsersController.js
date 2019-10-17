@@ -44,8 +44,8 @@ const createUser = async function(userInfo) {
         result = await pool
             .request()
             .input('UserName', sql.NVarChar, userInfo.UserName)
-            .input('TavernId', sql.Int, userInfo.Tavern.Id)
-            .input('RoleId', sql.Int, roleId)
+            .input('TavernId', sql.Int, userInfo.Tavern.ID)
+            .input('RoleId', sql.Int, userInfo.RoleID)
             .input('Password', sql.NVarChar, userInfo.Password)
             .query(
                 'INSERT INTO Users ([UserName], [TavernId], [RoleId], [Password]) OUTPUT inserted.* values (@UserName, @TavernId, @RoleId, @Password)',
@@ -66,7 +66,7 @@ create = async function(req, res) {
         return returnError(res, 'Please enter a password to register', 422);
     }
     let err, user;
-
+    
     [err, user] = await executeOrThrow(createUser(body));
     if (err) {
         return returnError(res, err, 422);
