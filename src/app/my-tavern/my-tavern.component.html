@@ -1,0 +1,15 @@
+<h2>My-Tavern</h2>
+<table style="width:100%">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Status</th> 
+          <th>Rate</th>
+        </tr>
+        <tr *ngFor="let room of rooms">
+          <td>{{room.id}}</td>
+          <td>{{room.RoomName}}</td>
+          <td>{{room.RoomStatus}}</td>
+          <td>${{room.DailyRate}}</td>
+        </tr>
+      </table>

@@ -14,6 +14,7 @@ import { TokenInterceptor } from './common/auth/token.interceptor';
 import { HomeComponent } from './home.component';
 import { single } from 'rxjs/operators';
 import { SignUpComponent } from './common/auth/signup/signup.component';
+import { TavernModule } from './my-tavern/my-tavern.module';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -24,6 +25,7 @@ import { SignUpComponent } from './common/auth/signup/signup.component';
         FormsModule,
         HttpClientModule,
         NgbModule,
+        TavernModule,
         AppRoutingModule,
         CookieModule.forRoot(),
     ],

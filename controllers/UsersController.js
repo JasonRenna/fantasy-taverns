@@ -23,18 +23,20 @@ const hashPassword = async function(userInfo) {
 const createUser = async function(userInfo) {
     const pool = await poolPromise;
     let result;
-    const roleId = parseInt(userInfo.Tavern.Id) === 0 ? 1 : 2;
-
-    if (parseInt(userInfo.Tavern.Id) === 0) {
+    const roleId = parseInt(userInfo.Tavern.ID) === 0 ? 1 : 2;
+    console.log('HI')
+    if (parseInt(userInfo.Tavern.ID) === 0) {
         try {
+            console.log('insert try')
             tavernResult = await pool
                 .request()
                 .input('TavernName', sql.VarChar, userInfo.Tavern.TavernName)
                 .query(
                     'INSERT INTO Taverns ([TavernName]) OUTPUT inserted.* values (@TavernName)',
                 );
-            userInfo.Tavern.Id = tavernResult.recordset.shift().ID;
+            userInfo.Tavern.ID = tavernResult.recordset.shift().ID;
         } catch (e) {
+            console.log('insert fail')
             throwError(e.message);
         }
     }
