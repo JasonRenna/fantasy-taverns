@@ -1,0 +1,43 @@
+<h2>Update Room</h2>
+<script>
+var paramID = $location.search().ID;
+
+</script> 
+<form #form="ngForm" (submit)="updateRoom(form)">
+<p>{{ routeParams|json }} {{ID}} {{RoomName}} test</p>
+<p>{{ queryParams|json }} test </p>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="RoomName">Room ID</label>
+            <input required type=number class="form-control" name="ID" ngModel #ID="ngModel">
+            <div *ngIf="ID.invalid && (ID.dirty || ID.touched)" class="alert alert-danger">
+                <div *ngIf="ID.errors.required">
+                    Room ID is required.
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col-md-6">
+            <label for="RoomName">Room Name</label>
+            <input required type="text" class="form-control" name="RoomName" ngModel #RoomName="ngModel">
+            <div *ngIf="RoomName.invalid && (RoomName.dirty || RoomName.touched)" class="alert alert-danger">
+                <div *ngIf="RoomName.errors.required">
+                  Room name is required.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+          <label for="DailyRate">Daily Rate</label>
+          <input required type="number" class="form-control" name="DailyRate" ngModel #DailyRate="ngModel">
+          <div *ngIf="DailyRate.invalid && (DailyRate.dirty || DailyRate.touched)" class="alert alert-danger">
+              <div *ngIf="DailyRate.errors.required">
+                Daily rate is required.
+              </div>
+          </div>
+      </div>
+  </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

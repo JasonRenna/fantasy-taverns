@@ -1,4 +1,8 @@
 <h2>My-Tavern</h2>
+<h4>Rooms</h4>
+<div class="col-md-12">
+<input style="width:100%;" type="text" placeholder="Search Room..." name="search">
+</div>
 <table style="width:100%">
         <tr>
           <th>Id</th>
@@ -9,7 +13,11 @@
         <tr *ngFor="let room of rooms">
           <td>{{room.id}}</td>
           <td>{{room.RoomName}}</td>
-          <td>{{room.RoomStatus}}</td>
+          <!--<td>{{room.RoomStatus}}</td>-->
           <td>${{room.DailyRate}}</td>
+          <td><a href="/my-tavern/update?ID={{room.id}}&RoomName={{room.RoomName}}&DailyRate={{room.DailyRate}}">Edit</a></td>
+          <!--<td><a [routerLink]="['/my-tavern/update']" routerLinkActive="router-link-active">Edit</a></td>-->
+          <!--<td><a [routerLink]="['/my-tavern/update', {ID: {{room.id}}, RoomName: {{room.RoomName}, DailyRate: {{room.DailyRate}}}]" routerLinkActive="router-link-active">Edit</a></td>-->
         </tr>
       </table>
+<button style="float: right;"type="button"[routerLink]="['/my-tavern/add']" routerLinkActive="router-link-active" class="btn btn-primary">Add</button>

@@ -71,6 +71,9 @@ app.post('/users', userController.create);
 app.post('/login', userController.login);
 
 app.get('/my-tavern', passport.authenticate('jwt',{session: false}) , tavernController.getAll,);
+app.post('/my-tavern/add', passport.authenticate('jwt',{session: false}) , tavernController.addRoom,);
+app.post('/my-tavern/update', passport.authenticate('jwt',{session: false}) , tavernController.updateRoom,);
+app.post('/my-tavern/roomstay', passport.authenticate('jwt',{session: false}) , tavernController.bookRoom,);
 
 app.post('/tavernList', (async function(req, res) {
     let taverns;
